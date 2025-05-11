@@ -1,0 +1,8 @@
+Fri May  9 18:32:02 2025
+ Sale - Laptop | Quantity: 2
+Fri May  9 18:32:02 2025
+ Discount - Apple | Discount: 10%
+Fri May  9 18:35:54 2025
+ Sale - Laptop | Quantity: 2
+Fri May  9 18:35:54 2025
+ Discount - Apple | Discount: 10%

@@ -1,0 +1,2 @@
+Apple | Food | 50 | 
+Laptop | Electronics | 8 | 
