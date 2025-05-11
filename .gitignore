@@ -1,0 +1,30 @@
+# Build and binary files
+*.exe
+*.obj
+*.o
+*.out
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+
+# Compiled dynamic libraries
+*.dll
+
+# Compiled static libraries
+*.lib
+*.a
+
+# VS Code settings
+.vscode/
+
+# System-specific files
+.DS_Store
+Thumbs.db
+
+# CMake and Makefiles (if used)
+CMakeCache.txt
+CMakeFiles/
+Makefile
