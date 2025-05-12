@@ -263,6 +263,28 @@ double getValidatedDouble(const string& prompt, double minValue = -DBL_MAX) {
     }
 }
 
+// Helper function to validate dates
+bool isValidDateFormat(const string& date) {
+    if (date.length() != 10 || date[4] != '-' || date[7] != '-') return false;
+
+    string yearStr = date.substr(0, 4);
+    string monthStr = date.substr(5, 2);
+    string dayStr = date.substr(8, 2);
+
+    try {
+        int year = stoi(yearStr);
+        int month = stoi(monthStr);
+        int day = stoi(dayStr);
+
+        if (month < 1 || month > 12) return false;
+        if (day < 1 || day > 31) return false;
+
+        // Optionally: add logic for months with only 30 days, leap years, etc.
+        return true;
+    } catch (...) {
+        return false;
+    }
+}
 int main() {
     InventoryManager manager;  // Create an instance of the InventoryManager class to handle product operations
     string input;
