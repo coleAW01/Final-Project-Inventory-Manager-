@@ -337,6 +337,9 @@ int main() {
             manager.displayInventory();
         }
         else if (option == 2) {
+            // Display all products before selling
+             cout << "\n=== Inventory ===\n";
+             manager.displayInventory();
             // Sell a product
             string name;
             int quantity;
