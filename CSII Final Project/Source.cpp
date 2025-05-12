@@ -274,9 +274,8 @@ int main() {
     // =======================
     while (true) {
         // Ask the user if they want to add a new product
-        cout << "\nAdd a new product? (yes/no): ";
-        getline(cin, input);
-        transform(input.begin(), input.end(), input.begin(), ::tolower);  // Convert input to lowercase for consistency
+        input = getYesOrNoInput("\nAdd a new product? (yes/no): ");
+        if (input == "no") break;
 
         if (input == "no") break;  // Exit loop if user says "no"
 
