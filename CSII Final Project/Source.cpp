@@ -338,8 +338,12 @@ int main() {
         }
         else if (option == 2) {
             // Display all products before selling
-             cout << "\n=== Inventory ===\n";
-             manager.displayInventory();
+            cout << "\n=== Inventory ===\n";
+            manager.displayInventory();
+
+            cout << "Please enter the *exact* product name as shown above.\n";
+            cout << "You will then be asked to enter the quantity you'd like to sell.\n";
+             
             // Sell a product
             string name;
             int quantity;
