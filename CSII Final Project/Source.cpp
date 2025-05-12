@@ -19,7 +19,7 @@
 #include <limits>
 #include <climits>
 #include <cfloat>
-#include <iomanip> // For safe timestamp formatting
+#include <iomanip> 
 
 using namespace std;
 
@@ -263,7 +263,23 @@ double getValidatedDouble(const string& prompt, double minValue = -DBL_MAX) {
     }
 }
 
-// Helper function to validate dates
+// Helper function to get "yes" or "no" input from user
+string getYesOrNoInput(const string& prompt) {
+    string input;
+    while (true) {
+        cout << prompt;
+        getline(cin, input);
+        transform(input.begin(), input.end(), input.begin(), ::tolower);
+
+        if (input == "yes" || input == "no") {
+            return input;
+        }
+        else {
+            cout << "Invalid input. Please enter 'yes' or 'no'.\n";
+        }
+    }
+}
+// Helper function to validate dates 
 bool isValidDateFormat(const string& date) {
     if (date.length() != 10 || date[4] != '-' || date[7] != '-') return false;
 
@@ -281,10 +297,12 @@ bool isValidDateFormat(const string& date) {
 
         // Optionally: add logic for months with only 30 days, leap years, etc.
         return true;
-    } catch (...) {
+    }
+    catch (...) {
         return false;
     }
 }
+
 int main() {
     InventoryManager manager;  // Create an instance of the InventoryManager class to handle product operations
     string input;
@@ -327,8 +345,14 @@ int main() {
         }
         else if (type == "food") {
             string expiration;
-            cout << "Enter expiration date (YYYY-MM-DD): ";
-            getline(cin, expiration);
+
+            while (true) {
+                cout << "Enter expiration date (YYYY-MM-DD): ";
+                getline(cin, expiration);
+                if (isValidDateFormat(expiration)) break;
+                cout << "Invalid date format or value. Please try again.\n";
+            }
+
             shared_ptr<Product> product = make_shared<Food>(name, price, stock, expiration);
             manager.addProduct(product);  // Add to inventory
         }
@@ -359,13 +383,14 @@ int main() {
             manager.displayInventory();
         }
         else if (option == 2) {
+
             // Display all products before selling
             cout << "\n=== Inventory ===\n";
             manager.displayInventory();
 
             cout << "Please enter the *exact* product name as shown above.\n";
             cout << "You will then be asked to enter the quantity you'd like to sell.\n";
-             
+
             // Sell a product
             string name;
             int quantity;
